@@ -1,0 +1,436 @@
+:root {
+    /* Cores (Nova paleta: Cinza, Preto e Branco) */
+    --cor-fundo-principal: #1a1a1a; /* Preto quase puro */
+    --cor-fundo-secundario: #282828; /* Cinza escuro */
+    --cor-fundo-sidebar: #121212; /* Mais escuro que o fundo principal */
+    --cor-fundo-menu-item: #222222; /* Cinza para itens de menu */
+    --cor-fundo-card: #333333; /* Cinza médio para cards */
+    --cor-fundo-search: #3a3a3a; /* Cinza para input de pesquisa */
+    --cor-fundo-dynamic-content: #2e2e2e; /* Cinza para conteúdo dinâmico */
+
+    --cor-texto-claro: #f0f0f0; /* Branco suave para textos principais */
+    --cor-texto-medio: #cccccc; /* Cinza claro para textos secundários */
+    --cor-texto-escuro: #999999; /* Cinza para textos mais discretos */
+    --cor-texto-link-hover: #ffffff; /* Branco puro no hover */
+
+    --cor-accent: #666666; /* Cinza médio como 'accent' (para bordas, botões) */
+    --cor-accent-hover: #888888; /* Cinza mais claro no hover */
+    --cor-accent-active: #aaaaaa; /* Cinza ainda mais claro para item ativo */
+
+    --cor-borda-clara: #444444; /* Borda cinza mais clara */
+    --cor-borda-escura: #555555; /* Borda cinza mais escura */
+
+    /* Sombras mais sutis para um look profissional */
+    --cor-sombra-leve: rgba(0, 0, 0, 0.3);
+    --cor-sombra-media: rgba(0, 0, 0, 0.4);
+    --cor-sombra-forte: rgba(0, 0, 0, 0.6);
+    --cor-sombra-mais-forte: rgba(0, 0, 0, 0.7);
+
+    /* Espaçamento */
+    --padding-sm: 10px;
+    --padding-md: 15px;
+    --padding-lg: 20px;
+    --padding-xl: 30px;
+    --padding-xxl: 40px;
+    --margin-sm: 10px;
+    --margin-md: 15px;
+    --margin-lg: 20px;
+    --margin-xl: 30px;
+    --margin-xxl: 40px;
+
+    /* Bordas e Sombras */
+    --radius-sm: 4px; /* Ligeiramente menor para um look mais "sharp" */
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 10px;
+    --shadow-sm: 0 1px 3px var(--cor-sombra-leve);
+    --shadow-md: 0 3px 6px var(--cor-sombra-media);
+    --shadow-lg: 0 6px 12px var(--cor-sombra-media);
+    --shadow-xl: 0 10px 20px var(--cor-sombra-forte);
+
+    /* Transições */
+    --transition-fast: all 0.2s ease-in-out;
+    --transition-normal: all 0.3s ease-in-out;
+    --transition-slow: all 0.5s ease-in-out;
+    --transition-transform: transform 0.2s ease-in-out;
+}
+
+/* Base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--cor-fundo-principal);
+    color: var(--cor-texto-claro);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Layout Principal */
+.container {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--cor-fundo-secundario);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background-color: var(--cor-fundo-sidebar);
+    color: var(--cor-texto-claro);
+    padding: var(--padding-xl);
+    box-shadow: 2px 0 10px var(--cor-sombra-forte);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-right: 1px solid var(--cor-borda-escura); /* Adiciona uma borda sutil */
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: var(--margin-xxl);
+    padding-bottom: var(--padding-lg);
+    border-bottom: 1px solid var(--cor-borda-clara);
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 2.2em;
+    color: var(--cor-texto-claro); /* Título principal em branco */
+    text-shadow: 1px 1px 2px var(--cor-sombra-mais-forte);
+    font-weight: 700; /* Mais negrito */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+}
+
+.menu {
+    flex-grow: 1;
+    margin-top: var(--margin-lg);
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu ul li {
+    margin-bottom: var(--margin-md);
+}
+
+.menu ul li a {
+    display: flex;
+    align-items: center;
+    padding: var(--padding-md) var(--padding-lg);
+    text-decoration: none;
+    color: var(--cor-texto-medio);
+    border-radius: var(--radius-md);
+    transition: var(--transition-normal), var(--transition-transform);
+    background-color: var(--cor-fundo-menu-item);
+    font-weight: 500;
+}
+
+.menu ul li a:hover {
+    background-color: var(--cor-accent);
+    color: var(--cor-texto-link-hover);
+    transform: translateX(5px);
+    box-shadow: 2px 2px 5px var(--cor-sombra-media);
+}
+
+.menu ul li a.active {
+    background-color: var(--cor-accent-active); /* Cinza mais claro para o ativo */
+    color: var(--cor-texto-link-hover);
+    transform: translateX(5px);
+    box-shadow: 2px 2px 5px var(--cor-sombra-media);
+    border-left: 4px solid var(--cor-texto-link-hover); /* Destaque lateral */
+    padding-left: calc(var(--padding-lg) - 4px); /* Ajusta padding para compensar a borda */
+}
+
+
+.menu ul li a i {
+    margin-right: var(--margin-md);
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+/* Conteúdo Principal */
+.content {
+    flex-grow: 1;
+    padding: var(--padding-xxl);
+    background: linear-gradient(to bottom right, var(--cor-fundo-secundario), #333333); /* Gradiente cinza mais suave */
+    overflow-y: auto;
+}
+
+.main-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: var(--margin-xxl);
+    padding-bottom: var(--padding-lg);
+    border-bottom: 1px solid var(--cor-borda-escura);
+    flex-wrap: wrap;
+    gap: var(--margin-md);
+}
+
+.search-bar {
+    display: flex;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    flex-grow: 1;
+    max-width: 400px;
+    border: 1px solid var(--cor-borda-clara); /* Borda sutil na barra de pesquisa */
+}
+
+.search-bar input {
+    padding: var(--padding-md) var(--padding-lg);
+    border: none;
+    background-color: var(--cor-fundo-search);
+    color: var(--cor-texto-claro);
+    outline: none;
+    font-size: 1em;
+    flex-grow: 1;
+    border-radius: var(--radius-md) 0 0 var(--radius-md); /* Arredonda só as pontas esquerdas */
+}
+
+.search-bar input::placeholder {
+    color: var(--cor-texto-escuro);
+}
+
+.search-bar button {
+    padding: var(--padding-md) var(--padding-lg);
+    border: none;
+    background-color: var(--cor-accent);
+    color: var(--cor-texto-link-hover);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0; /* Arredonda só as pontas direitas */
+}
+
+.search-bar button:hover {
+    background-color: var(--cor-accent-hover);
+}
+
+#dynamic-content {
+    background-color: var(--cor-fundo-dynamic-content);
+    padding: var(--padding-xxl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    transition: background var(--transition-slow);
+    min-height: 200px;
+    border: 1px solid var(--cor-borda-clara); /* Borda sutil para a seção de conteúdo */
+}
+
+/* Gradientes específicos para cada página de conteúdo dinâmico (via classe JS) */
+/* Todos os gradientes usarão tons de cinza agora */
+.content-apks {
+    background: linear-gradient(to bottom right, #2e2e2e, #4a4a4a) !important;
+}
+
+.content-programas {
+    background: linear-gradient(to bottom right, #2e2e2e, #3a3a3a) !important;
+}
+
+.content-books {
+    background: linear-gradient(to bottom right, #2e2e2e, #555555) !important;
+}
+
+.content-explore {
+    background: linear-gradient(to bottom right, #2e2e2e, #333333) !important;
+}
+
+.content-informacoes {
+    background: linear-gradient(to bottom right, #2e2e2e, #404040) !important;
+}
+
+.content-settings {
+    background: linear-gradient(to bottom right, #2e2e2e, #4a4a4a) !important;
+}
+
+#dynamic-content h2 {
+    color: var(--cor-texto-claro); /* Títulos de conteúdo em branco */
+    margin-top: 0;
+    margin-bottom: var(--margin-lg);
+    border-bottom: 2px solid var(--cor-accent-active); /* Borda em tom de cinza mais claro */
+    padding-bottom: var(--padding-sm);
+    font-weight: 600;
+}
+
+/* Grid de Categorias */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--padding-xl);
+    margin-top: var(--margin-xl);
+}
+
+.category-item {
+    background-color: var(--cor-fundo-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    padding: var(--padding-lg);
+    transition: var(--transition-transform), var(--transition-normal);
+    border: 1px solid var(--cor-borda-clara); /* Borda sutil para os cards */
+}
+
+.category-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.category-item img {
+    max-width: 100%;
+    height: 160px;
+    object-fit: cover;
+    margin-bottom: var(--margin-md);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 2px 4px var(--cor-sombra-leve);
+    border: 1px solid var(--cor-borda-clara); /* Borda na imagem */
+}
+
+.category-item h3 {
+    margin: var(--margin-md) 0;
+    color: var(--cor-texto-claro);
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.category-item .download-link {
+    display: inline-block;
+    background-color: var(--cor-accent);
+    color: var(--cor-texto-link-hover);
+    padding: var(--padding-sm) var(--padding-lg);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    margin-top: var(--margin-md);
+    transition: var(--transition-normal);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--cor-accent); /* Borda no botão */
+}
+
+.category-item .download-link:hover {
+    background-color: var(--cor-accent-hover);
+    transform: scale(1.05);
+    border-color: var(--cor-accent-hover);
+}
+
+/* Mensagem de "Nenhum resultado" */
+.no-results {
+    color: var(--cor-texto-escuro);
+    text-align: center;
+    margin-top: var(--margin-xl);
+    font-size: 1.1em;
+}
+
+
+/* Responsividade Básica (Manter e adaptar as cores) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: var(--padding-lg);
+        box-shadow: 0 2px 10px var(--cor-sombra-forte);
+        position: static;
+        border-right: none; /* Remove borda lateral */
+        border-bottom: 1px solid var(--cor-borda-escura); /* Adiciona borda inferior */
+    }
+
+    .sidebar-header {
+        margin-bottom: var(--margin-lg);
+        padding-bottom: var(--padding-md);
+    }
+
+    .sidebar-header h2 {
+        font-size: 1.8em;
+    }
+
+    .menu ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--padding-sm);
+    }
+
+    .menu ul li {
+        margin-bottom: 0;
+    }
+
+    .menu ul li a {
+        padding: var(--padding-sm) var(--padding-md);
+        font-size: 0.9em;
+        text-align: center;
+        flex-direction: column; /* Ícone e texto empilhados no mobile */
+    }
+
+    .menu ul li a.active {
+        border-left: none; /* Remove borda lateral */
+        border-bottom: 3px solid var(--cor-texto-link-hover); /* Destaque inferior */
+        padding-bottom: calc(var(--padding-sm) - 3px); /* Ajusta padding */
+    }
+
+    .menu ul li a i {
+        margin-right: 0;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .content {
+        padding: var(--padding-lg);
+    }
+
+    .main-header {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: var(--margin-lg);
+    }
+
+    .search-bar {
+        width: 100%;
+        max-width: none;
+        margin-bottom: var(--margin-md);
+    }
+
+    #dynamic-content {
+        padding: var(--padding-lg);
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: var(--padding-md);
+    }
+
+    .category-item {
+        padding: var(--padding-md);
+    }
+
+    .category-item img {
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-header h2 {
+        font-size: 1.5em;
+    }
+
+    .menu ul li a {
+        padding: var(--padding-sm);
+        font-size: 0.8em;
+    }
+
+    .search-bar input,
+    .search-bar button {
+        padding: 10px 15px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+}
